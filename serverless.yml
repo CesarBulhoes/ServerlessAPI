@@ -1,0 +1,26 @@
+service: ServerlessApi
+frameworkVersion: '3'
+
+provider:
+    name: aws
+    runtime: nodejs14.x
+    region: sa-east-1
+    stage: dev
+
+functions:
+    run:
+        handler: bin/app.handler
+        events:
+            - http:
+                  path: /
+                  method: ANY
+                  cors: true
+# functions:
+#   run:
+#     handler: index.handler
+#     events:
+#       - httpApi:
+#           path: /
+#           method: get
+plugins:
+    - serverless-plugin-typescript
